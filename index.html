@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="https://kit.fontawesome.com/f8ebfa65c6.js" crossorigin="anonymous"></script>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		body {
+			width: 100%;
+			display: grid;
+			/*para dividir elementos entre colunmas y filas*/
+			place-items: center;
+			/*centrar elementos*/
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+			line-height: 1.5;
+			/*altura de linea*/
+		}
+
+		header {
+			display: grid;
+			grid: initial;
+			place-items: center;
+			width: 100%;
+			height: 150px;
+			background: #646464;
+
+
+		}
+
+		/******style del menu********************************************/
+
+
+
+		h1 {
+			color: brown;
+			font-family: 'Croissant One', serif;
+			font-size: 3em;
+
+		}
+
+
+		nav ul {
+			display: inline;
+			font-weight: 900;
+			position: relative;
+			float: right;
+
+			font-size: 1.5em;
+			margin: 10px;
+			z-index: 1000;
+			/* border: 1px solid #ccc; */
+			box-shadow: 0 2px 4px rgba(55, 49, 49, 0.2);
+			background: linear-gradient(to bottom, #a07eb6, #baabbb);
+			transform: translate(-5px);
+			transition: transform 0.3s ease-in-out;
+
+
+		}
+
+		ul:hover {
+			display: block;
+			transform: translateX(0);
+
+		}
+
+		a {
+			color: #020202;
+			font-size: 1em;
+			text-decoration: none;
+			text-align: center;
+
+		}
+
+
+		li {
+			display: none;
+			list-style: none;
+			margin: 0px;
+			height: 40px;
+		}
+
+		ul:hover li {
+			display: block;
+
+		}
+
+		/**********style del main***************************************/
+
+		main {
+
+			display: grid;
+			width: 100%;
+			height: auto;
+			background: #c2c2c2;
+
+
+		}
+
+		.titulo-proyectos {
+			font-size: 3rem;
+			color: #020202;
+			text-align: center;
+		}
+
+		.contenido {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			/* Crea tres columnas de tamaño igual */
+			gap: 20px;
+			/* Espacio entre los elementos */
+			justify-items: center;
+			margin: 20px;
+		}
+
+		/* ----------------------------------------------------------------- */
+
+		.cuadro {
+			position: relative;
+			/*la ponemos en relacion con su posicion */
+			width: 80%;
+			box-shadow: 0 0 25px 0 rgb(0, 0, 0, .3);
+			border: 1px solid #ddd;
+			/* Borde opcional para resaltar los elementos */
+			padding: 10px;
+			/* Espaciado interno opcional */
+			height: 40vh;
+			/**/
+
+		}
+
+		/*general lineas con pseudoelemtos//general 2 lineas*/
+		.cuadro::before,
+		.cuadro::after {
+			content: "";
+			position: absolute;
+			/*para tenerlo mas visible*/
+			border: solid 2px orange;
+
+		}
+
+		.cuadro::before {
+			top: 1rem;
+			bottom: .5rem;
+			right: 1rem;
+
+		}
+
+		.cuadro::after {
+
+			bottom: .5rem;
+			right: .5rem;
+			left: 1rem;
+
+		}
+
+		.img_cuadro {
+			position: absolute;
+			/*la imagen estara por encima de todos los elementos anteriore*/
+			width: 90%;
+			height: 92%;
+			object-fit: cover;
+			/*para determinar la distancia sin estirar la imagen*/
+			/* z-index: -1; ********************/
+			/*para poner la imagen por debajo por eso el valor de negativo*/
+		}
+
+		.cont_cuadro {
+			/* background: rgba(232, 46, 132, 0.913); FONDO DE COLOR ************** */
+			/*marcar diferencia texto y imagen creo sombra .5 grado de profundidad*/
+			color: white;
+			/*color texto*/
+			padding: 2rem;
+			height: 80%;
+		}
+
+		.titulo,
+		.text {
+			margin: 0;
+			/*margen por defecto*/
+		}
+
+		.titulo {
+			font-size: 1rem;
+			line-height: 1.4;
+			margin-bottom: .6em;
+			position: relative;
+			z-index: 1;
+			color: black;
+
+		}
+
+		.titulo:hover {
+			cursor: pointer;
+
+		}
+
+		.titulo::before {
+			content: "";
+			position: absolute;
+			background: orange;
+			width: 100%;
+			top: -.1em;
+			bottom: -.15em;
+			left: -3.5rem;
+			z-index: -1;
+			box-shadow: inset -15px 0 10px -10px rgb(0, 0, 0, .5);
+
+		}
+
+		.titulo::after {
+			content: "";
+			position: absolute;
+			background-color: orange;
+			top: -.1em;
+			bottom: -.15em;
+			width: 2rem;
+			left: calc(100% + 2rem);
+			box-shadow: inset -12px 0 10px -10px rgb(0, 0, 0, .5);
+		}
+
+		.text {
+			text-align: right;
+
+		}
+
+		footer {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			width: 100%;
+			height: 150px;
+			background: #343333;
+			color: white;
+
+		}
+
+		.redes {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 20px;
+			width: 100%;
+			font-size: 1.5em;
+			background-color: #020202;
+		}
+
+		.redes a:hover {
+			filter: contrast(40%) sepia(1) hue-rotate(20deg) saturate(1000%);
+		}
+
+		.fas,
+		.fa-solid,
+		.fa-brands {
+			color: aliceblue;
+
+		}
+
+		@media all and (max-width: 700px) {
+
+			.contenido {
+				display: grid;
+				grid-template-columns: repeat(1, 1fr);
+				/* Crea tres columnas de tamaño igual */
+				/* gap: 20px; */
+				/* Espacio entre los elementos */
+				/* justify-items: center;
+			margin: 20px; */
+			}
+
+			header {
+				display: grid;
+				/* grid: initial; */
+				place-items: center;
+				width: 100%;
+				height: 50px;
+				background: #646464;
+
+
+			}
+
+			nav {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				/* grid: initial;
+				place-items: center;
+				width: 100%;
+				height: 150px;
+				background: #646464; */
+
+
+			}
+
+			h1 {
+				font-size: 1em;
+			}
+
+			nav ul {
+				font-size: 0.5rem;
+
+				margin: 5px;
+			}
+
+
+
+
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<header>
+		<h1>Mayra Hernandez</h1>
+		<!-- <nav>
+
+			<ul> <a href="#">home</a></ul>
+		 <ul> <a href="#">html/css</a>
+				<li><a href="mapas/mapas.html" target="_blank">mapas</a></li>
+				<li><a href="iconos/iconosprueba.html" target="_blank">iconos</a></li>
+			</ul> 
+			<ul> <a href="#">javascript</a>
+				 <li><a href="practicasjavascript/practica.html" target="_blank">Practica</a></li>
+				<li><a href="practicasjavascript/array.html" target="_blank">array</a></li>
+				<li><a href="practicasjavascript/buclewhile.html" target="_blank">bucle while</a></li>
+				<li><a href="practicasjavascript/function.html" target="_blank">funciones/while
+					</a></li>
+				<li><a href="practicasjavascript/miprimerafuncion.js" target="_blank">Mi funcion</a></li> 
+
+			</ul>
+			<ul> <a href="#">exercises</a>
+			<li><a href="ejercicio2/index.html" target="_blank">ejercicio2</a></li>
+				<li><a href="ejercicio27/index.html" target="_blank">exercise 27</a> </li>
+				<li><a href="prueba31/index.html" target="_blank">prueba31</a></li>
+				<li><a href="formularios/index.html" target="_blank">formularios</a></li>
+				<li><a href="Rental/index.html" target="_blank">Rental</a></li>
+			</ul>
+			<ul> <a href="https://mayrahernnadez.000webhostapp.com/" target="_blank">hostinger</a></ul>
+		</nav>  -->
+	</header>
+
+	<main>
+		<h1 class="titulo-proyectos">Mis Proyectos</h1>
+
+
+		<section class="contenido">
+			<article class="cuadro">
+				<img class="img_cuadro" src="imgformu.png" alt="imagen de rocas">
+				<div class="cont_cuadro">
+					<h2 class="titulo"> <a href="https://mayrahernnadez.000webhostapp.com/"
+							target="_blank">hostinger</a></h2>
+					<p class="text">
+
+					</p>
+				</div>
+			</article>
+			<article class="cuadro">
+				<img class="img_cuadro" src="0_1rkxf_ZpS9Y4oiPK.gif" alt="arbol">
+				<div class="cont_cuadro">
+					<h2 class="titulo"><a href="practicasjavascript/practica.html" target="_blank">Javascript</a></h2>
+					<p class="text">
+
+					</p>
+				</div>
+			</article>
+			<article class="cuadro">
+				<img class="img_cuadro" src="Percona_Dist-for-MySQL.gif" alt="arbol">
+				<div class="cont_cuadro">
+					<h2 class="titulo"><a href="MySQL/index.html" target="_blank">MySQL</a></h2>
+					<p class="text">
+
+					</p>
+				</div>
+			</article>
+			<article class="cuadro">
+				<img class="img_cuadro" src="examen.gif" alt="arbol">
+				<div class="cont_cuadro">
+					<h2 class="titulo"><a href="examen/index.html" target="_blank">examenes</a></h2>
+					<p class="text">
+					</p>
+				</div>
+			</article>
+			<article class="cuadro">
+				<img class="img_cuadro" src="pc-laptop.gif" alt="arbol">
+				<div class="cont_cuadro">
+					<h2 class="titulo"><a href="mi_primera_web_php/index.php" target="_blank">PHP</a></h2>
+					<p class="text">
+					</p>
+				</div>
+			</article>
+
+
+			<article class="cuadro">
+				<img class="img_cuadro" src="bootstrap/bootstrap1/assets/img/portfolio/1.jpg" alt="arbol">
+				<div class="cont_cuadro">
+					<h2 class="titulo"><a href="bootstrap/index.html" target="_blank">bootstrap</a></h2>
+					<p class="text">
+					</p>
+				</div>
+			</article>
+			<article class="cuadro">
+				<img class="img_cuadro" src="css.gif" alt="arbol">
+				<div class="cont_cuadro">
+					<h2 class="titulo"><a href="ejercicio2/index.html" target="_blank">html/css</a></h2>
+					<p class="text">
+
+					</p>
+				</div>
+			</article>
+			<article class="cuadro">
+				<img class="img_cuadro" src="slider.webp" alt="una imagen de flor">
+				<div class="cont_cuadro">
+					<h2 class="titulo"><a href="ejercicio27/index.html" target="_blank">exercise 27</a></h2>
+					<p class="text">
+
+					</p>
+				</div>
+			</article>
+			<article class="cuadro">
+				<img class="img_cuadro" src="elefante.webp" alt="imagen de elefante">
+				<div class="cont_cuadro">
+					<h2 class="titulo"> <a href="prueba31/index.html" target="_blank">exercise 31</a></h2>
+					<p class="text">
+
+					</p>
+				</div>
+			</article>
+
+			<article class="cuadro">
+				<img class="img_cuadro" src="imagen2.webp" alt="estudio de fotografia">
+				<div class="cont_cuadro">
+					<h2 class="titulo"> <a href="Rental/index.html">rental</a></h2>
+					<p class="text">
+
+					</p>
+				</div>
+			</article>
+			<article class="cuadro">
+				<img class="img_cuadro" src="fondo.png" alt="arbol">
+				<div class="cont_cuadro">
+					<h2 class="titulo"> <a href="menuhamburguesa.html">menu hamburguesa</a></h2>
+					<p class="text">
+
+					</p>
+				</div>
+			</article>
+
+
+		</section>
+
+
+
+
+
+	</main>
+
+	<footer class="redes">
+		<p class="redes">
+			<a href="#"><i class="fas fa-link"></i></a>
+			<a href="#"><i class="fa-solid fa-envelope"></i></a>
+			<a href="#"><i class="fa-brands fa-linkedin"></i></a>
+			<a href="#"><i class="fa-brands fa-instagram"></i></a>
+			<a href="#"><i class="fa-brands fa-facebook"></i></a>
+			<a href="#"><i class="fa-brands fa-youtube"></i></a>
+		</p>
+		<p>derechos reservados </p>
+	</footer>
+
+
+
+
+</body>
+
+</html>

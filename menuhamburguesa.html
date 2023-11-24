@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Hamburguesa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2%;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            gap: 25px;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        a,
+        .logo {
+            text-decoration: none;
+            color: darkorchid;
+        }
+
+        .menu a:hover {
+            color: cadetblue;
+            text-decoration: underline;
+        }
+
+        .logo {
+            font-weight: bold;
+        }
+
+        .burger {
+            display: none;
+            /* Inicialmente oculto en pantallas más grandes */
+            cursor: pointer;
+        }
+
+        .burger i {
+            font-size: 24px;
+        }
+
+        /* Agrega el icono de cierre (X) cuando el menú está activo */
+        .burger i.fa-times
+
+        /*::before*/
+            {
+            content: "\f00d";
+            color: red;
+        }
+
+        @media all and (max-width: 700px) {
+
+            .menu {
+                display: none;
+                /* Ocultar menú en pantallas pequeñas */
+            }
+
+            .menu a {
+                color: rgb(47, 10, 148);
+                text-decoration: none;
+
+            }
+
+            .menu a:hover {
+                text-decoration: underline whitesmoke;
+                color: aliceblue;
+                transform: skewX(20deg);
+
+
+            }
+
+
+
+            .menu.active {
+                display: flex;
+                flex-direction: column;
+                background-color: aqua;
+                height: 100vh;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
+
+            .burger {
+                display: block;
+                z-index: 999;
+                /* Mostrar el botón de hamburguesa en pantallas pequeñas */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Menu Burger</div>
+
+        <nav class="menu">
+            <a class="item" href="#"><i class="fas fa-home"></i>Home</a>
+            <a class="item" href="#"><i class="fas fa-leaf"></i> Services</a>
+            <a class="item" href="#"><i class="fas fa-apple-alt"></i>Blog</a>
+            <a class="item" href="#"><i class="fas fa-mug-hot"></i>Contact</a>
+        </nav>
+        <a class="burger" onclick="menuDesplegable()">
+            <i class="fas fa-bars"></i>
+        </a>
+    </header>
+
+    <script>
+        const menu = document.querySelector(".menu");
+        const burgerIcon = document.querySelector(".burger i");
+
+        function menuDesplegable() {
+            menu.classList.toggle("active");
+            //burgerIcon.classList.toggle("fa-bars");
+            burgerIcon.classList.toggle("fa-times");
+        }
+    </script>
+
+    <!-- querySelector es un método en JavaScript que se utiliza para seleccionar un elemento HTML en el DOM (Document Object Model) basado en un selector CSS. 
+ -->
+</body>
+
+</html>
